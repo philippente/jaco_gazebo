@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <name>jaco_gazebo</name>
+  <version>0.0.3</version>
+  <description>The jaco_gazebo package</description>
+  <author email="philipp.ennen@ifu.rwth-aachen.de">Philipp Ennen</author>
+  <author email="alex@thoriumrobotics.com">Alex Henning</author>
+  <maintainer email="alex@thoriumrobotics.com">Alex Henning</maintainer>
+  <maintainer email="dekent@gatech.edu">David Kent</maintainer>
+  <maintainer email="philipp.ennen@ifu.rwth-aachen.de">Philipp Ennen</maintainer>
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/jaco_gazebo</url>
+  <url type="bugtracker">https://github.com/GT-RAIL/jaco_gazebo/issues</url>
+  <url type="repository">https://github.com/GT-RAIL/jaco_gazebo</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>controller_manager</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>jaco_description</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+</package>

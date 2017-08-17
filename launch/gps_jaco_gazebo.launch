@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="badmm" default="false"/>
+
+    <!-- send jaco urdf to param server -->
+    <include file="$(find jaco_gazebo)/launch/jaco_upload.launch">
+	<arg name="hardware_interface" value="EffortJointInterface"/>
+	<arg name="badmm" value="$(arg badmm)"/>
+    </include>
+<!--
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    	<param name="use_gui" value="false"/>	
+	<rosparam param="source_list">["/JACOArmPlugin/joint_states"]</rosparam>
+    </node>
+
+    <node pkg="robot_state_publisher" type="state_publisher" name="rob_st_pub" >
+    </node>
+-->
+    <!-- start gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+    <node name="spawn_jaco_model" pkg="gazebo_ros" type="spawn_model"
+	  args="$(optenv ROBOT_INITIAL_POSE) -unpause -urdf -param robot_description
+		-model jaco -ros_namespace /gazebo"
+	  respawn="false" output="screen" />
+
+
+    <!-- start controller -->
+    <include file="$(find jaco_gazebo)/launch/gps_jaco_controller.launch" />
+
+</launch>
